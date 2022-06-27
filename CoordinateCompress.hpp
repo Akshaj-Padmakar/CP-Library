@@ -1,5 +1,6 @@
 auto coo_compress = [&](vector<int> &x) {
     // coordinates compresse x and over-writes on it !
+    //hello
     int sz = x.size(), id = 0;
     map<int, int> mp;
 
