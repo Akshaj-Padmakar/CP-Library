@@ -61,7 +61,7 @@ void solve() {
 		}
 		ans.pop_back();
 		reverse(begin(ans), end(ans));
-		if (ans.size() != n) return vector<pair<int, int>> {};
+		if (ans.size() != m) return vector<pair<int, int>> {};
 		return ans;
 	};
 
