@@ -1,5 +1,7 @@
-//Kosaraju's Algorithm.
-
+/*
+Kosaraju's Algorithm.
+-> 1-indexed, finds the scc for a directed graph(can contain self loops)/
+*/
 void solve() {
 	int n, m;
 	cin >> n >> m;
@@ -51,3 +53,10 @@ void solve() {
 	}
 
 }
+/*
+Problems -
+-> https://atcoder.jp/contests/practice2/tasks/practice2_g
+-> https://cses.fi/problemset/task/1751
+-> https://cses.fi/problemset/task/1682
+-> https://cses.fi/problemset/task/1683
+*/
