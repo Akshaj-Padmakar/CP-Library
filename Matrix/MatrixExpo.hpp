@@ -53,6 +53,85 @@ Matrix pw(Matrix a, int p) {
 
 
 
+//--------------------------------------<MINT MATRIX>-------------------------------------------------
+
+struct Matrix {
+	vector< vector<mint> > mat;
+	int n, m;
+
+	Matrix(const vector<vector<mint>>& values) {
+		n = values.size(), m = values[0].size();
+
+		mat = values;
+	}
+
+	static Matrix identity_matrix(int n) {
+		vector< vector<mint> > dum(n, vector<mint>(n, 0));
+		for (int i = 0; i < n; i++) {
+			dum[i][i] = 1;
+		}
+		return dum;
+	}
+
+	Matrix operator*(const Matrix &other) const {
+		assert(m == other.n);
+
+		int szN = n, szK = other.m;
+
+		vector< vector<mint> > ans(szN, vector<mint>(szK, 0));
+
+		for (int i = 0; i < szN; i++) {
+			for (int j = 0; j < szK; j++) {
+				for (int k = 0; k < m; k++) {
+					ans[i][j] += mat[i][k] * other.mat[k][j];
+				}
+			}
+		}
+
+		return ans;
+	}
+	Matrix operator+(const Matrix &other) const {
+		assert(other.n == other.n && other.m == other.m);
+
+		vector<vector<mint>> ans = mat;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				ans[i][j] += other.mat[i][j];
+			}
+		}
+		return ans;
+	}
+
+
+	Matrix operator-(const Matrix &other) const {
+		assert(other.n == other.n && other.m == other.m);
+
+		vector<vector<mint>> ans = mat;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				ans[i][j] -= other.mat[i][j];
+			}
+		}
+		return ans;
+	}
+
+	Matrix binpow(int p)const {
+		Matrix result = identity_matrix(m);
+		Matrix mul(mat);
+
+		while (p > 0) {
+			if (p & 1) {
+				result = mul * result;
+			}
+			mul = mul * mul;
+			p >>= 1ll;
+		}
+
+		return result;
+	}
+};
+
+
 
 //--------------------------------------<LONG DOUBLE MATRIX>-------------------------------------------------
 
