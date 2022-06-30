@@ -1,7 +1,7 @@
 /*
 Instructions :
          *> Done with path-compression and Union-by-rank
-			   *> intialise = O(n), find = O(α(n)), merge = O(α(n)), same = O(α(n)),groups = O(n*α(n))
+	 *> intialise = O(n), find = O(α(n)), merge = O(α(n)), same = O(α(n)),groups = O(n*α(n))
 */
 
 struct dsu {
