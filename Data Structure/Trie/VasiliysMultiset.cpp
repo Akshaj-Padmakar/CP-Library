@@ -92,30 +92,17 @@ void solve() {
 			string mx(LOGN, '0');
 			int j = 0;
 			for (auto c : s) {
-				if (c == '1') {
-					//I need a 0 here to maximise
-					if (trie[node][0].first != 0 && trie[node][0].second != 0) {
-						mx[j++] = '0';
-						node = trie[node][0].first;
-					} else {
-						if (trie[node][1].second == 0) {
-							break;
-						}
-						mx[j++] = '1';
-						node = trie[node][1].first;
-					}
+				int val = (c == '1' ? 0 : 1);
+
+				if (!trie[node][val].first && !trie[node][val].second) {
+					mx[j++] = (char)('0' + val);
+					node = trie[node][val].first;
 				} else {
-					//I need a 1 here to maximise
-					if (trie[node][1].first != 0 && trie[node][1].second != 0) {
-						mx[j++] = '1';
-						node = trie[node][1].first;
-					} else {
-						if (trie[node][0].second == 0) {
-							break;
-						}
-						mx[j++] = '0';
-						node = trie[node][0].first;
+					if (!trie[node][(val ^ 1)].second || !trie[node][val ^ 1].first) {
+						break;
 					}
+					mx[j++] = (char)('0' + (1 ^ val));
+					node = trie[node][val ^ 1].first;
 				}
 			}
 
@@ -147,4 +134,3 @@ signed main() {
 
 	// cerr << "Time elapsed: " << ((long double)clock() / CLOCKS_PER_SEC) << " s.\n";
 }
-
