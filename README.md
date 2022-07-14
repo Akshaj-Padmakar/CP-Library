@@ -1,6 +1,6 @@
 # CP-Library
 
-* This is Library I have created over my past 1.5 years of CP experience.
+* This is the Library I have created over my past 1.5 years of CP experience.
 
 * My Compitive Profiles :
   - [Codeforces](https://codeforces.com/profile/ap_2089)
